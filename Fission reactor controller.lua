@@ -270,6 +270,9 @@ reactor.setBurnRate(0)
 
 end
 
+    
+monitor.setCursorPos(1,17)
+monitor.write("By Patino:github.com/MrAlPatino/CC-Tweaked-Codes ")
 sleep(0.1)
 end
 
