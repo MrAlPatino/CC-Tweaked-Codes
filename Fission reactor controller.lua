@@ -1,6 +1,6 @@
-local reactor = peripheral.wrap("fissionReactorLogicAdapter_0")
+local reactor = peripheral.wrap("fissionReactorLogicAdapter_1")
 local monitor = peripheral.wrap("top") 
-local MaxTemp = 600  --this is the default temperature cuttoff 
+local MaxTemp = 800  --this is the default temperature cuttoff 
 local MaxDam = 10 --this is the default max damage before reactor shutdown  
 
 --reactor = your reactor port like fissionReactorLogicAdapter_0 
@@ -171,6 +171,12 @@ monitor.setCursorPos(18,6)
 monitor.write("^")
 monitor.setCursorPos(22,6)
 monitor.write("^")
+monitor.setCursorPos(26,6)
+monitor.write("^")
+monitor.setCursorPos(30,6)
+monitor.write("^")
+monitor.setCursorPos(34,6)
+monitor.write("^")
 monitor.setTextScale(1)
 monitor.setCursorPos(1,7)
 monitor.write("100")
@@ -179,12 +185,27 @@ monitor.write("200")
 monitor.setCursorPos(9,7)
 monitor.write("300")
 monitor.setCursorPos(13,7)
+monitor.setBackgroundColor(colors.green)
 monitor.write("400")
 monitor.setCursorPos(17,7)
 monitor.write("500")
+monitor.setBackgroundColor(colors.yellow)
 monitor.setCursorPos(21,7)
 monitor.write("600")
 monitor.setCursorPos(25,7)
+monitor.write("700")
+monitor.setBackgroundColor(colors.red)
+monitor.setCursorPos(29,7)
+monitor.write("800")
+monitor.setCursorPos(33,7)
+monitor.write("900")
+
+
+
+monitor.setBackgroundColor(colors.black)
+
+
+monitor.setCursorPos(37,7)
 monitor.write("K")
 monitor.setTextScale(1)
 
@@ -253,14 +274,14 @@ monitor.setCursorPos(temp*3.5,5)
 monitor.setBackgroundColor(1)
 monitor.write(" ")
 
-if rawtemp >= MaxTemp and reactor.getStatus() == false then
+if rawtemp >= MaxTemp and reactor.getStatus() == true then
 
 reactor.scram()
 reactor.setBurnRate(0)
 
 end
 
-if reactor.getDamagePercent() >= MaxDam and reactor.getStatus() == false then
+if reactor.getDamagePercent() >= MaxDam and reactor.getStatus() == true then
 
 reactor.scram()
 reactor.setBurnRate(0)
