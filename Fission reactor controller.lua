@@ -36,7 +36,7 @@ reactor.setBurnRate(math.floor(reactor.getActualBurnRate())-1)
 
 end
 
-if Xt >= 15 and Yt == 12 then
+if Xt >= 11 and Yt == 12 then
 
 reactor.setBurnRate(math.floor(reactor.getActualBurnRate())+1) 
 
@@ -102,19 +102,21 @@ monitor.clear()
 --Damage bar NOTE: removed the arrows to allow more stuff to be added, this will soon be modified
 
 
---monitor.setTextScale(1)
---monitor.setCursorPos(2,5)
---monitor.write("v")
---monitor.setCursorPos(6,5)
---monitor.write("v")
---monitor.setCursorPos(10,5)
---monitor.write("v")
---monitor.setCursorPos(14,5)
---monitor.write("v")
---monitor.setCursorPos(18,5)
---monitor.write("v")
---monitor.setCursorPos(22,5)
---monitor.write("v")
+monitor.setTextScale(1)
+monitor.setCursorPos(2,3)
+monitor.write("v")
+monitor.setCursorPos(6,3)
+monitor.write("v")
+monitor.setCursorPos(10,3)
+monitor.write("v")
+monitor.setCursorPos(14,3)
+monitor.write("v")
+monitor.setCursorPos(18,3)
+monitor.write("v")
+monitor.setCursorPos(22,3)
+monitor.write("v")
+
+
 monitor.setTextScale(1)
 monitor.setCursorPos(1,2)
 monitor.write("00%")
@@ -136,13 +138,13 @@ monitor.write("Core Damage")
 --damage slidder
 
 monitor.setTextScale(1)
-monitor.setCursorPos(reactor.getDamagePercent(),3)
+monitor.setCursorPos(reactor.getDamagePercent(),4)
 monitor.setBackgroundColor(colors.red)
 monitor.write(" ")
 
 if reactor.getDamagePercent() == 0 then 
 
-monitor.setCursorPos(1,3)
+monitor.setCursorPos(1,4)
 monitor.setBackgroundColor(colors.green)
 monitor.write(" ")
 
@@ -157,41 +159,36 @@ monitor.setBackgroundColor(colors.black)
 --Heat bar NOTE: removed the arrows to allow more stuff to be added, this will soon be modified
 
 monitor.setTextScale(1)
---monitor.setCursorPos(2,5)
-----monitor.write("^")
-----monitor.setCursorPos(6,5)
---monitor.write("^")
---monitor.setCursorPos(10,5)
---monitor.write("^")
---monitor.setCursorPos(14,5)
---monitor.write("^")
---monitor.setCursorPos(18,5)
---monitor.write("^")
---monitor.setCursorPos(22,5)
---monitor.write("^")
-monitor.setTextScale(1)
-monitor.setCursorPos(1,5)
-monitor.write("100")
-monitor.setCursorPos(5,5)
-monitor.write("200")
-monitor.setCursorPos(9,5)
-monitor.write("300")
-monitor.setCursorPos(13,5)
-monitor.write("400")
-monitor.setCursorPos(17,5)
-monitor.write("500")
-monitor.setCursorPos(21,5)
-monitor.write("600")
-monitor.setCursorPos(25,5)
-monitor.write("K")
+monitor.setCursorPos(2,6)
+monitor.write("^")
+monitor.setCursorPos(6,6)
+monitor.write("^")
+monitor.setCursorPos(10,6)
+monitor.write("^")
+monitor.setCursorPos(14,6)
+monitor.write("^")
+monitor.setCursorPos(18,6)
+monitor.write("^")
+monitor.setCursorPos(22,6)
+monitor.write("^")
 monitor.setTextScale(1)
 monitor.setCursorPos(1,7)
-monitor.write("VALUES ARE A BIT ROUNDED!!")
+monitor.write("100")
+monitor.setCursorPos(5,7)
+monitor.write("200")
+monitor.setCursorPos(9,7)
+monitor.write("300")
+monitor.setCursorPos(13,7)
+monitor.write("400")
+monitor.setCursorPos(17,7)
+monitor.write("500")
+monitor.setCursorPos(21,7)
+monitor.write("600")
+monitor.setCursorPos(25,7)
+monitor.write("K")
+monitor.setTextScale(1)
 
-monitor.setCursorPos(1,6)
-monitor.setBackgroundColor(colors.yellow)
-monitor.write("                      ")
-monitor.setBackgroundColor(colors.black)
+
 
 monitor.setCursorPos(1,8)
 monitor.write("Reactor Core K: "..rawtemp)
@@ -252,27 +249,24 @@ monitor.write("+10")
 
 --heat slidder
 monitor.setTextScale(1)
-monitor.setCursorPos(temp*3.5,4)
+monitor.setCursorPos(temp*3.5,5)
 monitor.setBackgroundColor(1)
 monitor.write(" ")
 
-if rawtemp >= MaxTemp then
+if rawtemp >= MaxTemp and reactor.getStatus() == false then
 
 reactor.scram()
 reactor.setBurnRate(0)
 
 end
 
-if reactor.getDamagePercent() >= MaxDam then
+if reactor.getDamagePercent() >= MaxDam and reactor.getStatus() == false then
 
 reactor.scram()
 reactor.setBurnRate(0)
 
 end
 
-    
-monitor.setCursorPos(1,17)
-monitor.write("By Patino:github.com/MrAlPatino/CC-Tweaked-Codes ")
 sleep(0.1)
 end
 
@@ -280,3 +274,4 @@ end
 end
 
 parallel.waitForAny(main,touch)
+
